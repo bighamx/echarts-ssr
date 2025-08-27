@@ -89,8 +89,6 @@ const svgStr = renderOptionToSVG(option, 800, 600);
 -   PNG 示例：![chart.png](output/chart.png)
 -   SVG 示例：![chart.svg](output/chart.svg)
 
-> 若首次运行还未生成输出，请执行命令：
->
 > ```bash
 > node main.js --optionPath=./option.json --format=both
 > ```
