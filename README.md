@@ -1,6 +1,6 @@
-## echart-ssr：在服务端渲染 ECharts 并输出图片
+## echarts-ssr：在服务端渲染 ECharts 并输出图片
 
-本项目演示如何在 Node.js 环境下使用 ECharts 的 SSR（Server-Side Rendering）能力生成 SVG 与 PNG 图片。你既可以在命令行直接调用，也可以在代码中以函数方式调用。
+本项目可在 Node.js 环境下使用 ECharts 的 SSR（Server-Side Rendering）能力生成 SVG 与 PNG 图片。你既可以在其他任何程序中使用命令行调用，也可以在 Node 代码中以函数方式调用。
 
 ### 环境要求
 
@@ -13,7 +13,7 @@
 npm i
 ```
 
-### 命令行用法（CLI）
+### 调用方法
 
 支持通过 JSON 文件或内联 JSON 传入 ECharts option。
 
@@ -43,9 +43,7 @@ node main.js --option="{\"xAxis\":{\"type\":\"category\",\"data\":[\"Mon\",\"Tue
 -   `--outName`：输出文件名（不含后缀），默认 `chart`
 -   `--format`：`svg` | `png` | `both`，默认 `both`
 
-注意：`--format` 用法是 `--format=png` 或 `--format png`，不要写成 `--format==png`。
-
-### 代码内用法（API）
+### NodeJS 调用
 
 ```js
 const { renderEChartToFiles, renderEChartToBuffers, renderOptionToSVG } = require('./main');
@@ -84,7 +82,7 @@ const svgStr = renderOptionToSVG(option, 800, 600);
 }
 ```
 
-### 示例输出图片（来自 `./output`）
+### 示例输出图片
 
 -   PNG 示例：![chart.png](output/chart.png)
 -   SVG 示例：![chart.svg](output/chart.svg)
