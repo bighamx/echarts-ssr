@@ -95,22 +95,6 @@ const svgStr = renderOptionToSVG(option, 800, 600);
 > node main.js --optionPath=./option.json --format=both
 > ```
 
-### SVG 转 PNG 的实现
-
-渲染流程：ECharts 在 SSR 下输出 SVG 字符串，随后使用 `sharp` 将该 SVG 栅格化并编码为 PNG。
-关键代码：
-
-```js
-const svgStr = renderOptionToSVG(option, width, height);
-await sharp(Buffer.from(svgStr)).png({ quality: 90 }).toFile(pngPath);
-```
-
-### 常见问题
-
--   进程不退出：已在 CLI 中渲染完成后 `process.exit(0)`，并对图表实例调用了 `dispose()`；如果你在自定义调用时悬挂，确认未保留未关闭的句柄（计时器/文件流等）。
--   `--format` 写成 `--format==png` 会被解析为 `=png`，导致不生效；请使用 `--format=png` 或 `--format png`。
--   PNG 模糊：可以通过 `sharp(Buffer.from(svgStr), { density: 144 })` 提升清晰度（同时增大体积）。
-
 ### 许可证
 
 MIT
